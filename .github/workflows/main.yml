@@ -1,0 +1,16 @@
+name: CI
+
+on:
+  schedule:
+  - cron: '10 1 * * *'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Check for updates
+      run: |
+        echo "Check https://github.com/semantic-release/semantic-release for a new release"
+        echo "did this run"

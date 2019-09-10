@@ -20,6 +20,11 @@ jobs:
         DOCKER_USERNAME: jaredreisinger
         DOCKER_PASSWORD: ${{ secrets.docker_password }}
 
+    - name: examine directory
+      run: |
+        pwd
+        ls -laF
+
     - name: build image
       uses: actions/docker/cli@master
       with:

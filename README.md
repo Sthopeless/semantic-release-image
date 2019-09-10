@@ -7,10 +7,10 @@ A generally-up-to-date image containing [semantic-release](https://semantic-rele
 The image is constructed with `semantic-release` as the ENTRYPOINT, so you can easily verify things are working with:
 
 ```shell
-docker run --rm -ti jaredreisinger/semantic-image --help
+docker run --rm -ti jaredreisinger/semantic-release --help
 ```
 
-... and you should see the regular help output from semantic-image.
+... and you should see the regular help output from semantic-release.
 
 #### In a CI/CD pipeline
 

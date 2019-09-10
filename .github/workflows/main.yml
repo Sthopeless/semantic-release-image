@@ -1,16 +1,25 @@
-name: CI
+name: Build image (weekly)
 
 on:
+  # if we ever update things...
+  push:
+    branches:
+      - master
+  # and/or every Sunday (so it's stable through the week)
   schedule:
-  - cron: '0 0 1 * *'
+    - cron: '0 0 * * SUN'
 
 jobs:
   build:
 
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: Check for updates
+    - name: build image
       run: |
-        echo "Check https://github.com/semantic-release/semantic-release for a new release"
-        echo "did this run"
+        docker build --tag jaredreisinger/semantic-release:latest .
+
+    - name: push image
+      run: |
+        echo "this will fail until the secret is set up..."
+        docker push jaredreisinger/semantic-release:latest .

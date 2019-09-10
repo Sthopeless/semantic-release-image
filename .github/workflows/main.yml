@@ -1,9 +1,11 @@
 name: Build image (weekly)
 
 on:
-  schedule:
-    # every Sunday (so it's stable through the week)
-    - cron: '0 0 * * SUN'
+  # schedule:
+  #   # every Sunday (so it's stable through the week)
+  #   - cron: '0 0 * * SUN'
+  push:
+    - master
 
 jobs:
   build:

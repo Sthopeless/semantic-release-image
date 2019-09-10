@@ -1,4 +1,4 @@
-name: Build image (weekly)
+name: Build image (weekly or push)
 
 on:
   # if we ever update things...
@@ -15,11 +15,16 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: log in to docker
+      uses: actions/docker/login@master
+      secrets:
+        - DOCKER_USERNAME
+        - DOCKER_PASSWORD
+
     - name: build image
-      run: |
-        docker build --tag jaredreisinger/semantic-release:latest .
+      uses: actions/docker/cli@master
+      args: build --tag jaredreisinger/semantic-release:latest .
 
     - name: push image
-      run: |
-        echo "this will fail until the secret is set up..."
-        docker push jaredreisinger/semantic-release:latest .
+      uses: actions/docker/cli@master
+      args: push jaredreisinger/semantic-release:latest

@@ -1,4 +1,4 @@
-name: Build image (weekly)
+name: Build image
 
 on:
   # schedule:
@@ -16,14 +16,16 @@ jobs:
     steps:
     - name: log in to docker
       uses: actions/docker/login@master
-      secrets:
-        - DOCKER_USERNAME
-        - DOCKER_PASSWORD
+      env:
+        docker_username: jaredreisinger
+        docker_password: ${{ secrets.docker_password }}
 
     - name: build image
       uses: actions/docker/cli@master
-      args: build --tag jaredreisinger/semantic-release:latest .
+      with:
+        args: build --tag jaredreisinger/semantic-release:latest .
 
     - name: push image
       uses: actions/docker/cli@master
-      args: push jaredreisinger/semantic-release:latest
+      with:
+        args: push jaredreisinger/semantic-release:latest

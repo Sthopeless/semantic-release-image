@@ -17,8 +17,8 @@ jobs:
     - name: log in to docker
       uses: actions/docker/login@master
       env:
-        docker_username: jaredreisinger
-        docker_password: ${{ secrets.docker_password }}
+        DOCKER_USERNAME: jaredreisinger
+        DOCKER_PASSWORD: ${{ secrets.docker_password }}
 
     - name: build image
       uses: actions/docker/cli@master

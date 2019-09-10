@@ -24,6 +24,8 @@ jobs:
       run: |
         pwd
         ls -laF
+        ls -laF ../
+        ls -laF ../../
 
     - name: build image
       uses: actions/docker/cli@master

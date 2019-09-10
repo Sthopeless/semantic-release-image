@@ -1,9 +1,9 @@
-name: Build image
+name: Build and publish image
 
 on:
-  # schedule:
-  #   # every Sunday (so it's stable through the week)
-  #   - cron: '0 0 * * SUN'
+  schedule:
+    # every Sunday (so it's stable through the week)
+    - cron: '0 0 * * SUN'
   push:
     branches:
       - master
@@ -16,25 +16,15 @@ jobs:
     steps:
       - uses: actions/checkout@master
 
-      - name: examine directory
-        run: |
-          pwd
-          ls -laF
-          ls -laF ../
-          ls -laF ../../
-
-      - name: build image
-        uses: actions/docker/cli@master
+      - uses: actions/docker/cli@master
         with:
           args: build --tag jaredreisinger/semantic-release:latest .
 
-      - name: log in to docker
-        uses: actions/docker/login@master
+      - uses: actions/docker/login@master
         env:
           DOCKER_USERNAME: jaredreisinger
           DOCKER_PASSWORD: ${{ secrets.docker_password }}
 
-      - name: push image
-        uses: actions/docker/cli@master
+      - uses: actions/docker/cli@master
         with:
           args: push jaredreisinger/semantic-release:latest

@@ -14,25 +14,27 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - name: log in to docker
-      uses: actions/docker/login@master
-      env:
-        DOCKER_USERNAME: jaredreisinger
-        DOCKER_PASSWORD: ${{ secrets.docker_password }}
+      - uses: actions/checkout@master
 
-    - name: examine directory
-      run: |
-        pwd
-        ls -laF
-        ls -laF ../
-        ls -laF ../../
+      - name: examine directory
+        run: |
+          pwd
+          ls -laF
+          ls -laF ../
+          ls -laF ../../
 
-    - name: build image
-      uses: actions/docker/cli@master
-      with:
-        args: build --tag jaredreisinger/semantic-release:latest .
+      - name: build image
+        uses: actions/docker/cli@master
+        with:
+          args: build --tag jaredreisinger/semantic-release:latest .
 
-    - name: push image
-      uses: actions/docker/cli@master
-      with:
-        args: push jaredreisinger/semantic-release:latest
+      - name: log in to docker
+        uses: actions/docker/login@master
+        env:
+          DOCKER_USERNAME: jaredreisinger
+          DOCKER_PASSWORD: ${{ secrets.docker_password }}
+
+      - name: push image
+        uses: actions/docker/cli@master
+        with:
+          args: push jaredreisinger/semantic-release:latest

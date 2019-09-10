@@ -1,12 +1,8 @@
-name: Build image (weekly or push)
+name: Build image (weekly)
 
 on:
-  # if we ever update things...
-  push:
-    branches:
-      - master
-  # and/or every Sunday (so it's stable through the week)
   schedule:
+    # every Sunday (so it's stable through the week)
     - cron: '0 0 * * SUN'
 
 jobs:

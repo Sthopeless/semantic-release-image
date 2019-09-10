@@ -5,7 +5,8 @@ on:
   #   # every Sunday (so it's stable through the week)
   #   - cron: '0 0 * * SUN'
   push:
-    - master
+    branches:
+      - master
 
 jobs:
   build:

@@ -16,23 +16,11 @@ jobs:
     steps:
       - uses: actions/checkout@master
 
-      #- uses: actions/docker/cli@master
-      #  with:
-      #    args: build --tag jaredreisinger/semantic-release:latest .
-      #
-      #- uses: actions/docker/login@master
-      #  env:
-      #    DOCKER_USERNAME: jaredreisinger
-      #    DOCKER_PASSWORD: ${{ secrets.docker_password }}
-      #
-      #- uses: actions/docker/cli@master
-      #  with:
-      #    args: push jaredreisinger/semantic-release:latest
-
       # The actions/docker repository has disappeared, but we should be able to use the
       # docker command available directly in the virtual environment.
-      - run: |
-          docker login --username jaredreisinger --password ${{ secrets.docker_password }}
+      - name: build and publish
+        run: |
+          docker login --username jaredreisinger --password ${{ secrets.docker_access_token }}
           docker build --tag jaredreisinger/semantic-release:latest .
           docker push jaredreisinger/semantic-release:latest
           

@@ -4,13 +4,13 @@ A generally-up-to-date image containing [semantic-release](https://semantic-rele
 
 ## Usage
 
-The image is constructed with `semantic-release` as the ENTRYPOINT, so you can easily verify things are working with:
+The image assumes that `/source` is the working directory, and has `semantic-release` as the default ENTRYPOINT, so you can verify things are working with:
 
 ```shell
-docker run --rm -ti jaredreisinger/semantic-release --help
+docker run --rm -ti -v .:/source -e GITHUB_TOKEN=YOUR-TOKEN-HERE jaredreisinger/semantic-release --dry-run
 ```
 
-... and you should see the regular help output from semantic-release.
+(with _your_ token in place of `YOUR-TOKEN-HERE`, of course)... and you should see the regular dry-run output from semantic-release. Depending on the plugins your `.releaserc` specifies, you may need other environment variable defined.
 
 #### In a CI/CD pipeline
 
@@ -22,9 +22,12 @@ steps:
   # . . .
   - name: release
     image: jaredreisinger/semantic-release
+    environment:
+      GITHUB_TOKEN:
+        from_secret: github_token
 ```
 
-If you have a `.releaserc` file, your chosen plugins and configuration will magically be used.
+(Assuming here that `github_token` has already been set up as a Drone repository or organization secret.) If you have a `.releaserc` file, your chosen plugins and configuration will magically be used. Also note that Drone binds the source directory to the image and sets that directory as the current working one, so there's no need to specifically mount into `/source`. This should be true of any Docker-based CI/CD.
 
 ## Notes
 

@@ -52,4 +52,11 @@ RUN npm install -g \
 RUN npm install -g \
   @jedmao/semantic-release-npm-github-config@latest
 
+# Consumers of this image should mount their project directory into `/source`,
+# which will be the current directory when semantic-release runs.  Docker-based
+# CI/CD tools might mount a different directory, but they should also explicitly
+# set the working directory such that everything will still work.
+WORKDIR /source
+VOLUME /source
+
 ENTRYPOINT [ "semantic-release" ]

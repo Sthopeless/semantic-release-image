@@ -10,7 +10,7 @@ The image assumes that `/source` is the working directory, and has `semantic-rel
 docker run --rm -ti -v .:/source -e GITHUB_TOKEN=YOUR-TOKEN-HERE jaredreisinger/semantic-release --dry-run
 ```
 
-(with _your_ token in place of `YOUR-TOKEN-HERE`, of course)... and you should see the regular dry-run output from semantic-release. Depending on the plugins your `.releaserc` specifies, you may need other environment variable defined.
+(with _your_ token in place of `YOUR-TOKEN-HERE`, of course)... and you should see the regular dry-run output from semantic-release. Depending on the plugins your `.releaserc` specifies, you may need other environment variables defined.
 
 #### In a CI/CD pipeline
 

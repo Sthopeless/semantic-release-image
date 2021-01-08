@@ -33,24 +33,24 @@ RUN npm install -g \
 
 # community plugins
 RUN npm install -g \
-  @conveyal/maven-semantic-release@latest \
+  #@conveyal/maven-semantic-release@latest \
   @qiwi/semantic-release-gh-pages-plugin@latest \
-  gradle-semantic-release-plugin@latest \
-  semantic-release-ado@latest \
+  #gradle-semantic-release-plugin@latest \
+  #semantic-release-ado@latest \
   semantic-release-chrome@latest \
-  semantic-release-circleci-orb@latest \
-  semantic-release-docker@latest \
+  #semantic-release-circleci-orb@latest \
+  #semantic-release-docker@latest \
   semantic-release-expo@latest \
   #semantic-release-firefox@latest \
-  semantic-release-gcr@latest \
+  #semantic-release-gcr@latest \
   semantic-release-gerrit@latest \
   semantic-release-slack-bot@latest \
-  semantic-release-verify-deps@latest \
-  semantic-release-vsce@latest
+  semantic-release-verify-deps@latest
+  #semantic-release-vsce@latest
 
 # community configs
-RUN npm install -g \
-  @jedmao/semantic-release-npm-github-config@latest
+# RUN npm install -g \
+#   @jedmao/semantic-release-npm-github-config@latest
 
 # Consumers of this image should mount their project directory into `/source`,
 # which will be the current directory when semantic-release runs.  Docker-based

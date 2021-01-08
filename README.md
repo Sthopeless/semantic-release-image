@@ -2,6 +2,8 @@
 
 A generally-up-to-date image containing [semantic-release](https://semantic-release.gitbook.io/semantic-release/) and most official and community plugins, good for use in containerized CI/CD pipelines!
 
+> _**Update:** Several of the community plugins have started exhibiting dependency resolution issues with semantic-release, so I have commented them out in the interest of keeping the image updated to the core semantic-release builds.  Please log an issue if this causes a problem, or feel free to fork this repo to have your own customized semantic-release image._
+
 ## Usage
 
 The image assumes that `/source` is the working directory, and has `semantic-release` as the default ENTRYPOINT, so you can verify things are working with:

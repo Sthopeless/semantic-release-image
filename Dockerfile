@@ -24,7 +24,8 @@ RUN npm install -g \
   @semantic-release/changelog@latest \
   @semantic-release/exec@latest \
   @semantic-release/git@latest \
-  @semantic-release/gitlab@latest
+  @semantic-release/gitlab@latest \
+  @saithodev/semantic-release-gitea
 
 # core configs
 RUN npm install -g \

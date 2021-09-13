@@ -1,3 +1,5 @@
+[![Build and publish image](https://github.com/Sthopeless/semantic-release-image/actions/workflows/main.yml/badge.svg)](https://github.com/Sthopeless/semantic-release-image/actions/workflows/main.yml)
+
 # semantic-release<small>(-image)</small>
 
 A generally-up-to-date image containing [semantic-release](https://semantic-release.gitbook.io/semantic-release/) and most official and community plugins, good for use in containerized CI/CD pipelines!

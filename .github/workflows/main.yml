@@ -20,7 +20,7 @@ jobs:
       # docker command available directly in the virtual environment.
       - name: build and publish
         run: |
-          docker login --username jaredreisinger --password ${{ secrets.docker_access_token }}
-          docker build --tag jaredreisinger/semantic-release:latest .
-          docker push jaredreisinger/semantic-release:latest
+          docker login --username sthopeless --password ${{ secrets.docker_access_token }}
+          docker build --tag sthopeless/cpha-semantic-release:latest .
+          docker push sthopeless/cpha-semantic-release:latest
           
